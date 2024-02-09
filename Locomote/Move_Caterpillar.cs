@@ -17,8 +17,7 @@ namespace Spice_n_Booster_Gobler.Locomote
             Console.Clear();
             travelersModel.IsTail_Already_Init = false;
 
-            travelersModel.Map_Radar_Section = _radar_Scope
-                .Generate_Scanned_Sections(travelersModel.Head_X_axis_Position, travelersModel.Head_Y_axis_Position);
+            _radar_Scope.Generate_Scanned_Sections(travelersModel);
             _globalVals.Body_Parts_Position.Clear();
 
             for (int y = 0; y < _globalVals.Scope_Diameter; y++)
@@ -28,7 +27,7 @@ namespace Spice_n_Booster_Gobler.Locomote
                 {
                     travelersModel.X_axis = x;
 
-                    updateMap.Update(travelersModel);
+                    if(!updateMap.UpdateMapPosition(travelersModel)) return false;
                 }
             }
 

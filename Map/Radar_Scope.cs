@@ -1,12 +1,17 @@
-﻿using Spice_n_Booster_Gobler.Util;
+﻿using Spice_n_Booster_Gobler.Models;
+using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Map
 {
     internal class Radar_Scope(IGlobal_Vals globalVals)
     {
         private readonly IGlobal_Vals _globalVals = globalVals; 
-        public  int[,,] Generate_Scanned_Sections(int Hx, int Hy)
+        public  void Generate_Scanned_Sections(TravelersModel travelersModel)
         {
+            int Hx, Hy;
+
+            Hx = travelersModel.Head_X_axis_Position;
+            Hy = travelersModel.Head_Y_axis_Position;
             int _scope_Radius = _globalVals.Scope_Radius;
             int _scope_Diameter = _globalVals.Scope_Diameter;
             int _max_Dimension = _globalVals.Max_Dimension;
@@ -49,7 +54,7 @@ namespace Spice_n_Booster_Gobler.Map
             //29.-5  29.0  29.5
             //-4.-5  -4.0  -4.5
 
-            return Radar_3d;
+            travelersModel.Map_Radar_Section = Radar_3d;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Spice_n_Booster_Gobler.Map
         private readonly ModifySegmentsCollection _segmentsCollection = new(globalVals);
         private readonly ModifySegmentsCollection _modifySegments = new(globalVals);
         private readonly int _scope_Radius = globalVals.Scope_Radius;
-        public bool Update(TravelersModel travelersModel)
+        public bool UpdateMapPosition(TravelersModel travelersModel)
         {
             int x, y;
 
