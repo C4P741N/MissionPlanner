@@ -11,32 +11,28 @@ namespace Spice_n_Booster_Gobler.Util
     {
         private readonly IGlobal_Vals _globalVals = global_Vals;
         public void Add_Segment_Location_To_Collection(
+            string label,
+            int map_y,
+            int map_x)
+        {
+            Add(map_y, map_x, label);
+        }
+        public void Add_Segment_Location_To_Collection(
             TravelersModel travelersModel, 
             string label)
         {
-            int map_y, map_x;
-
-            map_y = travelersModel.Map_Y_axis_Position;
-            map_x = travelersModel.Map_X_axis_Position;
-
-            if (_globalVals.Body_Parts_Position.ContainsKey(label))
-            {
-                _globalVals.Body_Parts_Position[label] = (map_y, map_x);
-            }
-            else
-            {
-                _globalVals.Body_Parts_Position.Add(label, (map_y, map_x));
-            }
+            Add(travelersModel.Map_Y_axis_Position, travelersModel.Map_X_axis_Position, label);
         }
         public void Add_Segment_Location_To_Collection(TravelersModel travelersModel)
         {
-            char segment = travelersModel.Position_Value;
-            int map_y, map_x;
-
-            map_y = travelersModel.Map_Y_axis_Position;
-            map_x = travelersModel.Map_X_axis_Position;
-
-            if (_globalVals.Body_Parts_Position.ContainsKey(segment.ToString()))
+            Add(travelersModel.Map_Y_axis_Position, travelersModel.Map_X_axis_Position, travelersModel.Position_Value.ToString());
+        }
+        private void Add(
+            int map_y, 
+            int map_x,
+            string segment)
+        {
+            if (_globalVals.Body_Parts_Position.ContainsKey(segment))
             {
                 _globalVals.Body_Parts_Position[segment.ToString()] = (map_y, map_x);
             }

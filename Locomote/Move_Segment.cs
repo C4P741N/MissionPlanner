@@ -46,14 +46,7 @@ namespace Spice_n_Booster_Gobler.Locomote
 
                 string newSegment = _globalVals.Segment.ToString() + segmentCount;
 
-                if (_globalVals.Body_Parts_Position.ContainsKey(newSegment))
-                {
-                    _globalVals.Body_Parts_Position[newSegment] = (map_y, map_x);
-                }
-                else
-                {
-                    _globalVals.Body_Parts_Position.Add(newSegment, (map_y, map_x));
-                }
+                _modifySegments.Add_Segment_Location_To_Collection(newSegment, map_y, map_x);
 
                 switch (_globalVals.Direction)
                 {
@@ -78,14 +71,7 @@ namespace Spice_n_Booster_Gobler.Locomote
 
             map[map_y][map_x] = _globalVals.Tail;
 
-            if (_globalVals.Body_Parts_Position.ContainsKey(_globalVals.Tail.ToString()))
-            {
-                _globalVals.Body_Parts_Position[_globalVals.Tail.ToString()] = (map_y, map_x);
-            }
-            else
-            {
-                _globalVals.Body_Parts_Position.Add(_globalVals.Tail.ToString(), (map_y, map_x));
-            }
+            _modifySegments.Add_Segment_Location_To_Collection(_globalVals.Tail.ToString(), map_y, map_x);
 
             return true;
         }
