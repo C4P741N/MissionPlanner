@@ -1,4 +1,5 @@
 ﻿using Spice_n_Booster_Gobler.Map;
+using Spice_n_Booster_Gobler.Models;
 using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Locomote
@@ -10,7 +11,7 @@ namespace Spice_n_Booster_Gobler.Locomote
         private readonly Move_Segment _move_Segment = new (globalVals);
         public  bool New_Head_N_Segments_Position(
             int Hy, int Hx,
-            ref char[][] map)
+            TravelersModel travelersModel)
         {
             Console.Clear();
             int _scope_Radius = _globalVals.Scope_Radius;
@@ -19,6 +20,7 @@ namespace Spice_n_Booster_Gobler.Locomote
             bool isSegements_Init = false, isTail_Init = false;
             int segment_x=-1, segment_y=-1;
             _globalVals.Body_Parts_Position.Clear();
+            char[][] map = travelersModel.Map_Full_Dimension;
 
             for (int y = 0; y < _globalVals.Scope_Diameter; y++)
             {
