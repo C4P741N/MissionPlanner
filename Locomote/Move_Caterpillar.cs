@@ -9,6 +9,7 @@ namespace Spice_n_Booster_Gobler.Locomote
         private readonly IGlobal_Vals _globalVals = globalVals;
         private readonly Radar_Scope _radar_Scope = new (globalVals);
         private readonly Move_Segment _move_Segment = new (globalVals);
+        private readonly DisplayRadarMap _displayRadar = new(globalVals);
         public  bool New_Head_N_Segments_Position(
             int Hy, int Hx,
             TravelersModel travelersModel)
@@ -16,18 +17,19 @@ namespace Spice_n_Booster_Gobler.Locomote
             Console.Clear();
             int _scope_Radius = _globalVals.Scope_Radius;
             int _max = _globalVals.Max_Dimension;
-            int[,,] scanned_section = _radar_Scope.Generate_Scanned_Sections(Hx, Hy);
+            travelersModel.Map_Radar_Section = _radar_Scope.Generate_Scanned_Sections(Hx, Hy);
             bool isSegements_Init = false, isTail_Init = false;
             int segment_x=-1, segment_y=-1;
             _globalVals.Body_Parts_Position.Clear();
+
             char[][] map = travelersModel.Map_Full_Dimension;
 
             for (int y = 0; y < _globalVals.Scope_Diameter; y++)
             {
                 for (int x = 0; x < _globalVals.Scope_Diameter; x++)
                 {
-                    int map_y = scanned_section[y, 0, x];
-                    int map_x = scanned_section[y, 1, x];
+                    int map_y = travelersModel.Map_Radar_Section[y, 0, x];
+                    int map_x = travelersModel.Map_Radar_Section[y, 1, x];
 
                     if (map_y < 0) map_y = (map_y + _max) % _max;
                     if (map_x < 0) map_x = (map_x + _max) % _max;
@@ -76,23 +78,8 @@ namespace Spice_n_Booster_Gobler.Locomote
                 }
             }
 
-            Console.WriteLine("Mission Control v.0.0.1");
-            Console.WriteLine();
+            _displayRadar.DisplayRadarSection(travelersModel);
 
-            for (int y = 0; y < _globalVals.Scope_Diameter; y++)
-            {
-                for (int x = 0; x < _globalVals.Scope_Diameter; x++)
-                {
-                    int map_y = scanned_section[y, 0, x];
-                    int map_x = scanned_section[y, 1, x];
-
-                    if (map_y < 0) map_y = (map_y + _max) % _max;
-                    if (map_x < 0) map_x = (map_x + _max) % _max;
-
-                    Console.Write(map[map_y][map_x]);
-                }
-                Console.WriteLine();
-            }
             return true;
         }
     }
