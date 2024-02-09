@@ -26,11 +26,17 @@ namespace Spice_n_Booster_Gobler.Locomote
             {
                 for (int x = 0; x < _globalVals.Scope_Diameter; x++)
                 {
-                    int map_y = travelersModel.Map_Radar_Section[y, 0, x];
-                    int map_x = travelersModel.Map_Radar_Section[y, 1, x];
+                    //int map_y = travelersModel.Map_Radar_Section[y, 0, x];
+                    //int map_x = travelersModel.Map_Radar_Section[y, 1, x];
 
-                    if (map_y < 0) map_y = (map_y + _max) % _max;
-                    if (map_x < 0) map_x = (map_x + _max) % _max;
+                    //if (map_y < 0) map_y = (map_y + _max) % _max;
+                    //if (map_x < 0) map_x = (map_x + _max) % _max;
+
+                    travelersModel.X_axis = x;
+                    travelersModel.Y_axis = y;
+
+                    int map_y = travelersModel.Map_Y_axis_Position;
+                    int map_x = travelersModel.Map_X_axis_Position;
 
                     bool isHeadPosition = y == _scope_Radius && x == _scope_Radius;
 

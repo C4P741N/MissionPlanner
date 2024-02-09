@@ -16,28 +16,28 @@ namespace Spice_n_Booster_Gobler.Models
         {
             get
             {
-                int xPosition = Map_Radar_Section[Y_axis, 0, X_axis] + new_Map_X_axis_Position;
+                int xPosition = Map_Radar_Section[Y_axis, 1, X_axis] + new_Map_X_axis_Position;
                 new_Map_X_axis_Position = 0;
                 return (xPosition + globalVals.Max_Dimension) % globalVals.Max_Dimension;
             }
-            set
-            {
-                new_Map_X_axis_Position = value;
-            }
+            //set
+            //{
+            //    new_Map_X_axis_Position = value;
+            //}
         }
         private int new_Map_Y_axis_Position = 0;
         public int Map_Y_axis_Position
         {
             get
             {
-                int yPosition = Map_Radar_Section[Y_axis, 1, X_axis] + new_Map_Y_axis_Position;
+                int yPosition = Map_Radar_Section[Y_axis, 0, X_axis] + new_Map_Y_axis_Position;
                 new_Map_Y_axis_Position = 0;
                 return (yPosition + globalVals.Max_Dimension) % globalVals.Max_Dimension;
             }
-            set
-            {
-                new_Map_Y_axis_Position = value;
-            }
+            //set
+            //{
+            //    new_Map_Y_axis_Position = value;
+            //}
         }
         public int Head_X_axis_Position { get; set; }
         public int Head_Y_axis_Position { get; set; }
