@@ -10,14 +10,12 @@ namespace Spice_n_Booster_Gobler.Locomote
         private readonly Radar_Scope _radar_Scope = new (globalVals);
         private readonly Move_Segment _move_Segment = new (globalVals);
         private readonly DisplayRadarMap _displayRadar = new(globalVals);
-        public  bool New_Head_N_Segments_Position(
-            int Hy, int Hx,
-            TravelersModel travelersModel)
+        public  bool New_Head_N_Segments_Position(TravelersModel travelersModel)
         {
             Console.Clear();
             int _scope_Radius = _globalVals.Scope_Radius;
             int _max = _globalVals.Max_Dimension;
-            travelersModel.Map_Radar_Section = _radar_Scope.Generate_Scanned_Sections(Hx, Hy);
+            travelersModel.Map_Radar_Section = _radar_Scope.Generate_Scanned_Sections(travelersModel.Head_X_axis_Position, travelersModel.Head_Y_axis_Position);
             bool isSegements_Init = false, isTail_Init = false;
             int segment_x=-1, segment_y=-1;
             _globalVals.Body_Parts_Position.Clear();

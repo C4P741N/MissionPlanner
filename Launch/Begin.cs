@@ -21,13 +21,16 @@ namespace Spice_n_Booster_Gobler.Launch
             //Global_Vals.Segment_Positions["Tx"] = Hx;
             //Global_Vals.Segment_Positions["Ty"] = Hy;
 
+            _travelersModel.Head_X_axis_Position = Hx;
+            _travelersModel.Head_Y_axis_Position = Hy;
+
             while (true)
             {
-                bool isCaterpillarAlive = _move_Head.New_Head_N_Segments_Position(Hy, Hx, _travelersModel);
+                bool isCaterpillarAlive = _move_Head.New_Head_N_Segments_Position(_travelersModel);
 
                 if (!isCaterpillarAlive) break;
 
-                if (!_movement_Direction.Update_Head_Position(ref Hy, ref Hx)) break;
+                if (!_movement_Direction.Update_Head_Position(_travelersModel)) break;
             }
 
             logger.Logg_Commands();

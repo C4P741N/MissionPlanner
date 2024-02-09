@@ -1,4 +1,5 @@
-﻿using Spice_n_Booster_Gobler.Util;
+﻿using Spice_n_Booster_Gobler.Models;
+using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
@@ -7,8 +8,7 @@ namespace Spice_n_Booster_Gobler.Locomote
         private readonly IGlobal_Vals _globalVals = globalVals;
         private readonly Forward_Command _forwardCommand = new(globalVals);
         private readonly Reverse_Command _reverseCommand = new(globalVals);
-        public bool Update_Head_Position(
-            ref int Hy, ref int Hx)
+        public bool Update_Head_Position(TravelersModel travelersModel)
         {
             bool ask_for_command= true;
             while (ask_for_command)
@@ -16,6 +16,10 @@ namespace Spice_n_Booster_Gobler.Locomote
                 Console.WriteLine();
                 Console.Write("Input command, press R to revert or N to exit: ");
                 string direction_command = Console.ReadLine()?.ToUpper() ?? "";
+
+                int Hy, Hx;
+                Hy = travelersModel.Head_Y_axis_Position;
+                Hx = travelersModel.Head_X_axis_Position;
 
                 if (string.IsNullOrEmpty(direction_command))
                 {
@@ -47,6 +51,9 @@ namespace Spice_n_Booster_Gobler.Locomote
 
                 if (Hy == 30) Hy = 0;
                 if (Hx == 30) Hx = 0;
+
+                travelersModel.Head_Y_axis_Position = Hy;
+                travelersModel.Head_X_axis_Position = Hx;
             }
 
             return true;
