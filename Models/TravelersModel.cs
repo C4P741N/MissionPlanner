@@ -65,7 +65,7 @@ namespace Spice_n_Booster_Gobler.Models
                 return (Y_axis == Scope_Radius && X_axis == Scope_Radius);
             }
         }
-        public bool IsOkayToModifyTail
+        public bool IsOkayToModifyTail_And_Segments
         {
             get
             {
