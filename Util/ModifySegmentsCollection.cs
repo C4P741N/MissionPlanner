@@ -10,7 +10,7 @@ namespace Spice_n_Booster_Gobler.Util
     internal class ModifySegmentsCollection(IGlobal_Vals global_Vals)
     {
         private readonly IGlobal_Vals _globalVals = global_Vals;
-        public void Add_Segment_Location(
+        public void Add_Segment_Location_To_Collection(
             TravelersModel travelersModel, 
             string label)
         {
@@ -28,7 +28,7 @@ namespace Spice_n_Booster_Gobler.Util
                 _globalVals.Body_Parts_Position.Add(label, (map_y, map_x));
             }
         }
-        public void Add_Segment_Location(TravelersModel travelersModel)
+        public void Add_Segment_Location_To_Collection(TravelersModel travelersModel)
         {
             char segment = travelersModel.Position_Value;
             int map_y, map_x;

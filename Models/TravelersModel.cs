@@ -20,10 +20,10 @@ namespace Spice_n_Booster_Gobler.Models
                 new_Map_X_axis_Position = 0;
                 return (xPosition + globalVals.Max_Dimension) % globalVals.Max_Dimension;
             }
-            //set
-            //{
-            //    new_Map_X_axis_Position = value;
-            //}
+            set
+            {
+                new_Map_X_axis_Position = value;
+            }
         }
         private int new_Map_Y_axis_Position = 0;
         public int Map_Y_axis_Position
@@ -34,10 +34,10 @@ namespace Spice_n_Booster_Gobler.Models
                 new_Map_Y_axis_Position = 0;
                 return (yPosition + globalVals.Max_Dimension) % globalVals.Max_Dimension;
             }
-            //set
-            //{
-            //    new_Map_Y_axis_Position = value;
-            //}
+            set
+            {
+                new_Map_Y_axis_Position = value;
+            }
         }
         public int Head_X_axis_Position { get; set; }
         public int Head_Y_axis_Position { get; set; }

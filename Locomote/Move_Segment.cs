@@ -1,23 +1,25 @@
-﻿using Spice_n_Booster_Gobler.Util;
+﻿using Spice_n_Booster_Gobler.Models;
+using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
     internal class Move_Segment(IGlobal_Vals globalVals)
     {
         private readonly IGlobal_Vals _globalVals = globalVals;
-        public bool New_Segment_Position(
-            int y, int x,
-            int map_y, int map_x,
-            ref char[][] map,
-            ref int segments_map_y,
-            ref int segments_map_x,
-            ref bool isSegements_Init)
+        private readonly ModifySegmentsCollection _modifySegments = new(globalVals);
+        private readonly int _max = globalVals.Max_Dimension;
+        private readonly int radius = globalVals.Scope_Radius;
+        public bool New_Segment_Position(TravelersModel travelersModel)
         {
-            int _max = _globalVals.Max_Dimension;
-            int radius = _globalVals.Scope_Radius;
-            var direction = _globalVals.Direction;
+            int x, y, map_y, map_x;
+            char[][] map = travelersModel.Map_Full_Dimension;
 
-            switch (direction)
+            x = travelersModel.X_axis;
+            y = travelersModel.Y_axis;
+            map_y = travelersModel.Map_Y_axis_Position;
+            map_x = travelersModel.Map_X_axis_Position;
+
+            switch (_globalVals.Direction)
             {
                 case EnumsFactory.EnumsFactory.Direction.Up:
                     if (x < radius) return false;
@@ -53,7 +55,7 @@ namespace Spice_n_Booster_Gobler.Locomote
                     _globalVals.Body_Parts_Position.Add(newSegment, (map_y, map_x));
                 }
 
-                switch (direction)
+                switch (_globalVals.Direction)
                 {
                     case EnumsFactory.EnumsFactory.Direction.Up:
                         map_y = (map_y + 1) % _max;
@@ -72,11 +74,7 @@ namespace Spice_n_Booster_Gobler.Locomote
                 }
 
                 segmentCount--;
-                isSegements_Init = true;
             }
-
-            segments_map_y = map_y;
-            segments_map_x = map_x;
 
             map[map_y][map_x] = _globalVals.Tail;
 
