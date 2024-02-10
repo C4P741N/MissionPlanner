@@ -2,7 +2,7 @@
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal interface IMoveHead
+    internal interface INavigate
     {
         bool Update_Head_Position(TravelersModel travelersModel);
     }

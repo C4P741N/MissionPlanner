@@ -5,7 +5,7 @@ namespace Spice_n_Booster_Gobler.Locomote
 {
     internal class Modify_Segment_Position(
         IGlobal_Vals _globalVals,
-        ISegmentsCollection _modifySegments) : IModify_Segment_Position
+        ISegmentsCollection _segments) : IModify_Segment_Position
     {
         private readonly int _max = _globalVals.Max_Dimension;
         private readonly int radius = _globalVals.Scope_Radius;
@@ -19,37 +19,41 @@ namespace Spice_n_Booster_Gobler.Locomote
             map_y = travelersModel.Map_Y_axis_Position;
             map_x = travelersModel.Map_X_axis_Position;
 
-            int Hx = travelersModel.Head_X_axis_Position;
-            int Hy = travelersModel.Head_Y_axis_Position;
-
             switch (_globalVals.Direction)
             {
                 case EnumsFactory.EnumsFactory.Direction.Up:
                     if (x < radius) return false;
-                    map_y = (map_y + 2) % _max;
+                    map_y = ((map_y + 1) + _max) % _max;
                     break;
                 case EnumsFactory.EnumsFactory.Direction.Right:
                     if (y < radius) return false;
+                    map_x = ((map_x - 1) + _max) % _max;
                     break;
                 case EnumsFactory.EnumsFactory.Direction.Down:
                     if (x < radius) return false;
+                    map_y = ((map_y - 1) + _max) % _max;
                     break;
                 case EnumsFactory.EnumsFactory.Direction.Left:
                     if (y < radius) return false;
-                    map_x = (map_x + 2) % _max;
+                    map_x = ((map_x + 1) + _max) % _max;
                     break;
                 default: return false;
             }
 
-            int segmentCount = _globalVals.Segment_Count;
+            int Hx = travelersModel.Head_X_axis_Position;
+            int Hy = travelersModel.Head_Y_axis_Position;
 
-            while (segmentCount > 0)
+            _segments.Get_Segment_Location(_globalVals.Tail.ToString(),out int segment_map_y, out int segment_map_x);
+
+            int loopCount = 0;
+            while (_globalVals.Segment_Count > loopCount)
             {
-                map[map_y][map_x] = _globalVals.Segment;
+                string newSegment = _globalVals.Segment.ToString() + loopCount;
 
-                string newSegment = _globalVals.Segment.ToString() + segmentCount;
+                //if (_segments.CointainsKey(newSegment))
+                    map[map_y][map_x] = _globalVals.Segment;
 
-                _modifySegments.Add_Segment_Location_To_Collection(newSegment, map_y, map_x);
+                _segments.Add_Segment_Location_To_Collection(newSegment, map_y, map_x);
 
                 switch (_globalVals.Direction)
                 {
@@ -69,12 +73,12 @@ namespace Spice_n_Booster_Gobler.Locomote
                         break;
                 }
 
-                segmentCount--;
+                loopCount++;
             }
 
             map[map_y][map_x] = _globalVals.Tail;
 
-            _modifySegments.Add_Segment_Location_To_Collection(_globalVals.Tail.ToString(), map_y, map_x);
+            _segments.Add_Segment_Location_To_Collection(_globalVals.Tail.ToString(), map_y, map_x);
 
             return true;
         }

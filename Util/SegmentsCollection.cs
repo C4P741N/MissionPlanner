@@ -1,4 +1,5 @@
-﻿using Spice_n_Booster_Gobler.Models;
+﻿using Spice_n_Booster_Gobler.Map;
+using Spice_n_Booster_Gobler.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,24 @@ namespace Spice_n_Booster_Gobler.Util
 {
     internal class SegmentsCollection(IGlobal_Vals _globalVals) : ISegmentsCollection
     {
+        public bool CointainsKey(string segment)
+        {
+            return _globalVals.Body_Parts_Position.ContainsKey(segment);
+        }
+        public void Get_Segment_Location(
+            string segment,
+            out int map_y,
+            out int map_x)
+        {
+            map_y = 0;
+            map_x = 0; // Initialize the out parameters in case the segment is not found
+
+            if (_globalVals.Body_Parts_Position.TryGetValue(segment, out var coordinates))
+            {
+                map_y = coordinates.Item1;
+                map_x = coordinates.Item2;
+            }
+        }
         public void Add_Segment_Location_To_Collection(
             string label,
             int map_y,

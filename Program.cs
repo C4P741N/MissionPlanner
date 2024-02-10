@@ -27,7 +27,7 @@ class Program
         services.AddScoped<IDefaultMap, DefaultMap>();
         services.AddScoped<IModify_Segment_Position, Modify_Segment_Position>();
         services.AddScoped<ISegmentsCollection, SegmentsCollection>();
-        services.AddScoped<IMoveHead, MoveHead>();
+        services.AddScoped<INavigate, Navigate>();
         services.AddScoped<IResourceCollection, ResourceCollection>();
 
         // Build the service provider

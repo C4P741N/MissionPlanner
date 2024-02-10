@@ -8,33 +8,35 @@ using System.Threading.Tasks;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class MoveHead(
+    internal class Navigate(
         IGlobal_Vals _globalVals,
-        ISegmentsCollection _modifySegments,
-        IResourceCollection resourceCollection) : IMoveHead
+        ISegmentsCollection _segments,
+        IResourceCollection _resourceCollection,
+        IModify_Segment_Position _move_Segment) : INavigate
     {
         public bool Update_Head_Position(TravelersModel travelersModel)
         {
             if (travelersModel.IsIrreplaceable_Resource)
             {
-                travelersModel.Set_Value_To_Map = _globalVals.Open_Space;
                 if (_globalVals.Segment_Count < 5) _globalVals.Segment_Count++;
 
-                resourceCollection.Modify(travelersModel);
+                _resourceCollection.UpdateCollection(travelersModel);
             }
             if (travelersModel.IsObstacle)
             {
                 Console.WriteLine("\nYou disintegrated your caterpillar !");
                 return false;
             }
+
             travelersModel.Set_Value_To_Map = _globalVals.Head;
+            _segments.Add_Segment_Location_To_Collection(travelersModel);
 
-            //int Hx = travelersModel.Head_X_axis_Position;
-            //int Hy = travelersModel.Head_Y_axis_Position;
+            string tailKey = _globalVals.Tail.ToString();
 
-            //travelersModel.Map_Full_Dimension[Hy][Hx] = _globalVals.Head;
-
-            _modifySegments.Add_Segment_Location_To_Collection(travelersModel);
+            if (!_segments.CointainsKey(tailKey))
+                _segments.Add_Segment_Location_To_Collection(travelersModel,tailKey);
+            else
+                travelersModel.IsTail_Already_Init = _move_Segment.New_Segment_Position(travelersModel);
 
             return true;
         }

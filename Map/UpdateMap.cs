@@ -12,13 +12,10 @@ namespace Spice_n_Booster_Gobler.Map
     internal class UpdateMap(
         IGlobal_Vals _globalVals,
         IModify_Segment_Position _move_Segment,
-        IMoveHead _moveHead) : IUpdateMap
+        INavigate _moveHead) : IUpdateMap
     {
         public bool UpdateMapPosition(TravelersModel travelersModel)
         {
-            if (travelersModel.IsOkayToModifyTail_And_Segments)
-                travelersModel.IsTail_Already_Init = _move_Segment.New_Segment_Position(travelersModel);
-
             if (travelersModel.IsHead_Position)
                 if (!_moveHead.Update_Head_Position(travelersModel)) return false;
 

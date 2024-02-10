@@ -100,6 +100,9 @@ namespace Spice_n_Booster_Gobler.Models
 
                 return (globalVals.Irreplaceable_Resources_List.ContainsValue((Map_Y_axis_Position, Map_X_axis_Position)))
                 && (!globalVals.Body_Parts_Position.ContainsValue((Map_Y_axis_Position, Map_X_axis_Position)));
+                //&& (Position_Value != globalVals.Segment
+                //    && Position_Value != globalVals.Tail
+                //    && Position_Value != globalVals.Head));
             }
         }
         public char Set_Value_To_Map
