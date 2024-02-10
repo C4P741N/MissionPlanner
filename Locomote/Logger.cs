@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class Logger(IGlobal_Vals global_Vals) : ILogger
+    internal class Logger(IGlobal_Vals _global_Vals) : ILogger
     {
-        private readonly IGlobal_Vals _global_Vals = global_Vals;
         private readonly string filePath = "caterpillar_commands.txt";
         public void Logg_Commands()
         {

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Spice_n_Booster_Gobler.Map
 {
-    internal class UpdateMap(IGlobal_Vals globalVals) : IUpdateMap
+    internal class UpdateMap(
+        IGlobal_Vals _globalVals,
+        IModify_Segment_Position _move_Segment,
+        IMoveHead _moveHead) : IUpdateMap
     {
-        private readonly IGlobal_Vals _globalVals = globalVals;
-        private readonly Move_Segment _move_Segment = new(globalVals);
-        private readonly MoveHead _moveHead = new(globalVals);
         public bool UpdateMapPosition(TravelersModel travelersModel)
         {
             if (travelersModel.IsOkayToModifyTail_And_Segments)

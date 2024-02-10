@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class MoveHead(IGlobal_Vals globalVals)
+    internal class MoveHead(
+        IGlobal_Vals _globalVals,
+        IModifySegmentsCollection _modifySegments) : IMoveHead
     {
-        private readonly IGlobal_Vals _globalVals = globalVals;
-        private readonly ModifySegmentsCollection _modifySegments = new(globalVals);
         public bool Update_Head_Position(TravelersModel travelersModel)
         {
             if (travelersModel.IsIrreplaceable_Resource)

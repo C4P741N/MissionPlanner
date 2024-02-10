@@ -3,12 +3,12 @@ using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class Move_Segment(IGlobal_Vals globalVals)
+    internal class Modify_Segment_Position(
+        IGlobal_Vals _globalVals,
+        IModifySegmentsCollection _modifySegments) : IModify_Segment_Position
     {
-        private readonly IGlobal_Vals _globalVals = globalVals;
-        private readonly ModifySegmentsCollection _modifySegments = new(globalVals);
-        private readonly int _max = globalVals.Max_Dimension;
-        private readonly int radius = globalVals.Scope_Radius;
+        private readonly int _max = _globalVals.Max_Dimension;
+        private readonly int radius = _globalVals.Scope_Radius;
         public bool New_Segment_Position(TravelersModel travelersModel)
         {
             int x, y, map_y, map_x;
@@ -58,8 +58,8 @@ namespace Spice_n_Booster_Gobler.Locomote
                         if (map_x < 0) map_x += _max;
                         break;
                     case EnumsFactory.EnumsFactory.Direction.Down:
-                        map_y = (map_y -1) % _max;
-                        if(map_y < 0) map_y += _max;
+                        map_y = (map_y - 1) % _max;
+                        if (map_y < 0) map_y += _max;
                         break;
                     case EnumsFactory.EnumsFactory.Direction.Left:
                         map_x = (map_x + 1) % _max;
