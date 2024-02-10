@@ -3,18 +3,18 @@ using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Map
 {
-    internal class Radar_Scope(IGlobal_Vals globalVals) : IRadar_Scope
+    internal class Radar_Scope(IGlobal_Vals _globalVals) : IRadar_Scope
     {
-        private readonly IGlobal_Vals _globalVals = globalVals;
+        private readonly int _scope_Radius = _globalVals.Scope_Radius;
+        private readonly int _scope_Diameter = _globalVals.Scope_Diameter;
+        private readonly int _max_Dimension = _globalVals.Max_Dimension;
         public void Generate_Scanned_Sections(TravelersModel travelersModel)
         {
             int Hx, Hy;
 
             Hx = travelersModel.Head_X_axis_Position;
             Hy = travelersModel.Head_Y_axis_Position;
-            int _scope_Radius = _globalVals.Scope_Radius;
-            int _scope_Diameter = _globalVals.Scope_Diameter;
-            int _max_Dimension = _globalVals.Max_Dimension;
+ 
             int zeroY = Hy - _scope_Radius;
 
             int[,,] Radar_3d = new int[_scope_Diameter, 2, _scope_Diameter];

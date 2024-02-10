@@ -3,11 +3,11 @@ using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class Collect_Next_Direction(IGlobal_Vals globalVals) : ICollect_Next_Direction
+    internal class Collect_Next_Direction(
+        IGlobal_Vals _globalVals,
+        IForward_Command _forwardCommand,
+        IReverse_Command _reverseCommand) : ICollect_Next_Direction
     {
-        private readonly IGlobal_Vals _globalVals = globalVals;
-        private readonly Forward_Command _forwardCommand = new(globalVals);
-        private readonly Reverse_Command _reverseCommand = new(globalVals);
         public bool Update_Head_Position(TravelersModel travelersModel)
         {
             bool ask_for_command = true;

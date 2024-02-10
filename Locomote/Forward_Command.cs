@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class Forward_Command(IGlobal_Vals globalVals)
+    internal class Forward_Command(IGlobal_Vals _globalVals) : IForward_Command
     {
-        private readonly IGlobal_Vals _globalVals = globalVals;
         public bool Move_Forward(
             string direction_command,
             ref int Hy, ref int Hx)

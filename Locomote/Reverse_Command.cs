@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class Reverse_Command(IGlobal_Vals globalVals)
+    internal class Reverse_Command(IGlobal_Vals _globalVals) : IReverse_Command
     {
-        private readonly IGlobal_Vals _globalVals = globalVals;
         public bool Reverse(ref int Hy, ref int Hx)
         {
             int steps, step, commands_count = _globalVals.Commands.Count;
@@ -18,7 +17,7 @@ namespace Spice_n_Booster_Gobler.Locomote
             while (true)
             {
                 Console.Write($"How many of the {commands_count} commands do you want to reverse? ");
-                
+
                 try
                 {
                     step = Convert.ToInt32(Console.ReadLine());

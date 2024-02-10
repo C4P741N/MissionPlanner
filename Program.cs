@@ -22,6 +22,9 @@ class Program
         services.AddScoped<IRadar_Scope, Radar_Scope>();
         services.AddScoped<IDisplayRadarMap, DisplayRadarMap>();
         services.AddScoped<IUpdateMap, UpdateMap>();
+        services.AddScoped<IForward_Command, Forward_Command>();
+        services.AddScoped<IReverse_Command, Reverse_Command>();
+        services.AddScoped<IDefaultMap, DefaultMap>();
 
         // Build the service provider
         var serviceProvider = services.BuildServiceProvider();
