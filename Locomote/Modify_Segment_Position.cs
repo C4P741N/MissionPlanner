@@ -5,13 +5,14 @@ namespace Spice_n_Booster_Gobler.Locomote
 {
     internal class Modify_Segment_Position(
         IGlobal_Vals _globalVals,
-        ISegmentsCollection _segments) : IModify_Segment_Position
+        ISegmentsCollection _segments,
+        ISectionPositionCorrecter _correcter) : IModify_Segment_Position
     {
         private readonly int _max = _globalVals.Max_Dimension;
         private readonly int radius = _globalVals.Scope_Radius;
         public bool New_Segment_Position(TravelersModel travelersModel)
         {
-            int x, y, map_y, map_x;
+            int x, y, map_y, map_x, Hy, Hx;
             char[][] map = travelersModel.Map_Full_Dimension;
 
             x = travelersModel.X_axis;
@@ -19,39 +20,62 @@ namespace Spice_n_Booster_Gobler.Locomote
             map_y = travelersModel.Map_Y_axis_Position;
             map_x = travelersModel.Map_X_axis_Position;
 
+            Hx = travelersModel.Map_X_axis_Position;//29 T0
+            Hy = travelersModel.Map_Y_axis_Position;//28 T29
+
+            _segments.Get_Segment_Location(_globalVals.Tail.ToString(), out int tail_map_y, out int tail_map_x);
+
+            bool correctPosition = _correcter.ShouldCorrect(travelersModel, tail_map_y, tail_map_x);
+
             switch (_globalVals.Direction)
             {
                 case EnumsFactory.EnumsFactory.Direction.Up:
-                    if (x < radius) return false;
-                    map_y = ((map_y + 1) + _max) % _max;
+                    if (correctPosition)
+                        map_y = ((Hy + 1) + _max) % _max;
+                    else
+                    {
+                        map_y = (tail_map_y + _max) % _max;
+                        map_x = (tail_map_x + _max) % _max;
+                    }
                     break;
                 case EnumsFactory.EnumsFactory.Direction.Right:
-                    if (y < radius) return false;
-                    map_x = ((map_x - 1) + _max) % _max;
+                    if (correctPosition)
+                        map_x = ((Hx - 1) + _max) % _max;
+                    else
+                    {
+                        map_y = (tail_map_y + _max) % _max;
+                        map_x = (tail_map_x + _max) % _max;
+                    }
                     break;
                 case EnumsFactory.EnumsFactory.Direction.Down:
-                    if (x < radius) return false;
-                    map_y = ((map_y - 1) + _max) % _max;
+                    if (correctPosition)
+                        map_y = ((Hy - 1) + _max) % _max;
+                    else
+                    {
+                        map_y = (tail_map_y + _max) % _max;
+                        map_x = (tail_map_x + _max) % _max;
+                    }
                     break;
                 case EnumsFactory.EnumsFactory.Direction.Left:
-                    if (y < radius) return false;
-                    map_x = ((map_x + 1) + _max) % _max;
+                    if (correctPosition)
+                        map_x = ((Hx + 1) + _max) % _max;
+                    else
+                    {
+                        map_y = (tail_map_y + _max) % _max;
+                        map_x = (tail_map_x + _max) % _max;
+                    }
                     break;
                 default: return false;
             }
 
-            int Hx = travelersModel.Head_X_axis_Position;
-            int Hy = travelersModel.Head_Y_axis_Position;
-
-            _segments.Get_Segment_Location(_globalVals.Tail.ToString(),out int segment_map_y, out int segment_map_x);
+            
 
             int loopCount = 0;
             while (_globalVals.Segment_Count > loopCount)
             {
                 string newSegment = _globalVals.Segment.ToString() + loopCount;
 
-                //if (_segments.CointainsKey(newSegment))
-                    map[map_y][map_x] = _globalVals.Segment;
+                map[map_y][map_x] = _globalVals.Segment;
 
                 _segments.Add_Segment_Location_To_Collection(newSegment, map_y, map_x);
 
@@ -76,7 +100,16 @@ namespace Spice_n_Booster_Gobler.Locomote
                 loopCount++;
             }
 
+            //int Hx = travelersModel.Map_X_axis_Position;//29 T0
+            //int Hy = travelersModel.Map_Y_axis_Position;//28 T29
+            //_segments.Get_Segment_Location(_globalVals.Tail.ToString(), out int tail_map_y, out int tail_map_x);
+
+            //int xDiff = Math.Abs(Hx - tail_map_x);
+            //int yDiff = Math.Abs(Hy - tail_map_y);
+
             map[map_y][map_x] = _globalVals.Tail;
+
+            //map[tail_map_y][tail_map_x] = _globalVals.Tail;
 
             _segments.Add_Segment_Location_To_Collection(_globalVals.Tail.ToString(), map_y, map_x);
 

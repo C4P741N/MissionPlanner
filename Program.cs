@@ -29,6 +29,7 @@ class Program
         services.AddScoped<ISegmentsCollection, SegmentsCollection>();
         services.AddScoped<INavigate, Navigate>();
         services.AddScoped<IResourceCollection, ResourceCollection>();
+        services.AddScoped<ISectionPositionCorrecter, SectionPositionCorrecter>();
 
         // Build the service provider
         var serviceProvider = services.BuildServiceProvider();
