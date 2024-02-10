@@ -7,19 +7,17 @@ namespace Spice_n_Booster_Gobler.Launch
 {
     internal class Begin(
         IGlobal_Vals globalVals,
-        ILogger logger) : IBegin
+        ILogger logger,
+        IMove_Caterpillar _move_Head,
+        ICollect_Next_Direction _movement_Direction,
+        IMap_Co_ordinates _co_ordinates) : IBegin
     {
-        private readonly Move_Caterpillar _move_Head = new(globalVals);
-        private readonly Collect_Next_Direction _movement_Direction = new(globalVals);
-        private readonly Map_Co_ordinates _co_ordinates = new();
         private readonly TravelersModel _travelersModel = new(globalVals);
         public void Lets_Catch_Them_All()
         {
-            _travelersModel.Map_Full_Dimension = _co_ordinates.Lets_Look_At_The_Map();
+            _travelersModel.Map_Full_Dimension = _co_ordinates.Lets_Look_At_The_Map(EnumsFactory.EnumsFactory.MapCoordinates.Default);
 
             int Hx = 0, Hy = 29; //Starting position
-            //Global_Vals.Segment_Positions["Tx"] = Hx;
-            //Global_Vals.Segment_Positions["Ty"] = Hy;
 
             _travelersModel.Head_X_axis_Position = Hx;
             _travelersModel.Head_Y_axis_Position = Hy;

@@ -2,6 +2,7 @@
 using Spice_n_Booster_Gobler.Util;
 using Microsoft.Extensions.DependencyInjection;
 using Spice_n_Booster_Gobler.Locomote;
+using Spice_n_Booster_Gobler.Map;
 
 
 class Program
@@ -15,6 +16,9 @@ class Program
         services.AddSingleton<IGlobal_Vals, Global_Vals>();
         services.AddScoped<IBegin, Begin>();
         services.AddScoped<ILogger, Logger>();
+        services.AddScoped<IMove_Caterpillar, Move_Caterpillar>();
+        services.AddScoped<ICollect_Next_Direction, Collect_Next_Direction>();
+        services.AddScoped<IMap_Co_ordinates, Map_Co_ordinates>();
 
         // Build the service provider
         var serviceProvider = services.BuildServiceProvider();

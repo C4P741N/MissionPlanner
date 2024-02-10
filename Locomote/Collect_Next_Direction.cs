@@ -3,14 +3,14 @@ using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class Collect_Next_Direction(IGlobal_Vals globalVals)
+    internal class Collect_Next_Direction(IGlobal_Vals globalVals) : ICollect_Next_Direction
     {
         private readonly IGlobal_Vals _globalVals = globalVals;
         private readonly Forward_Command _forwardCommand = new(globalVals);
         private readonly Reverse_Command _reverseCommand = new(globalVals);
         public bool Update_Head_Position(TravelersModel travelersModel)
         {
-            bool ask_for_command= true;
+            bool ask_for_command = true;
             while (ask_for_command)
             {
                 Console.WriteLine();
@@ -44,7 +44,7 @@ namespace Spice_n_Booster_Gobler.Locomote
                 else
                 {
                     isSuccess = _forwardCommand.Move_Forward(direction_command, ref Hy, ref Hx);
-                    if(isSuccess) _globalVals.Commands.Add(direction_command);
+                    if (isSuccess) _globalVals.Commands.Add(direction_command);
                 }
 
                 if (isSuccess) ask_for_command = false;

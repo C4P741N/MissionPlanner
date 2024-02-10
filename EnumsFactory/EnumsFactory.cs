@@ -10,5 +10,11 @@
             Left = 3,
             Up = 4,
         }
+        public enum MapCoordinates
+        {
+            None = 0,
+            Default = 1,
+            Import = 2,
+        }
     }
 }

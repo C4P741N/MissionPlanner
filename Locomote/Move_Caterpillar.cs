@@ -4,15 +4,15 @@ using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class Move_Caterpillar(IGlobal_Vals globalVals)
+    internal class Move_Caterpillar(IGlobal_Vals globalVals) : IMove_Caterpillar
     {
         private readonly IGlobal_Vals _globalVals = globalVals;
-        private readonly Radar_Scope _radar_Scope = new (globalVals);
-        private readonly Move_Segment _move_Segment = new (globalVals);
+        private readonly Radar_Scope _radar_Scope = new(globalVals);
+        private readonly Move_Segment _move_Segment = new(globalVals);
         private readonly DisplayRadarMap _displayRadar = new(globalVals);
         private readonly ModifySegmentsCollection _modifySegments = new(globalVals);
         private readonly UpdateMap updateMap = new(globalVals);
-        public  bool New_Head_N_Segments_Position(TravelersModel travelersModel)
+        public bool New_Head_N_Segments_Position(TravelersModel travelersModel)
         {
             Console.Clear();
             travelersModel.IsTail_Already_Init = false;
@@ -27,7 +27,7 @@ namespace Spice_n_Booster_Gobler.Locomote
                 {
                     travelersModel.X_axis = x;
 
-                    if(!updateMap.UpdateMapPosition(travelersModel)) return false;
+                    if (!updateMap.UpdateMapPosition(travelersModel)) return false;
                 }
             }
 
