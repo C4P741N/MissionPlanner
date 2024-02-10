@@ -20,7 +20,6 @@ namespace Spice_n_Booster_Gobler.Locomote
 
             segmentCount = _globalVals.Segment_Count;
 
-
             int loopCount = 0;
             while (segmentCount > loopCount)
             {
@@ -54,40 +53,26 @@ namespace Spice_n_Booster_Gobler.Locomote
                 case EnumsFactory.EnumsFactory.Direction.Up:
                     if (correctPosition)
                         map_y = ((map_y + 1) + _max) % _max;
-                    else
-                    {
-                        map_y = (tail_map_y + _max) % _max;
-                        map_x = (tail_map_x + _max) % _max;
-                    }
                     break;
                 case EnumsFactory.EnumsFactory.Direction.Right:
                     if (correctPosition)
                         map_x = ((map_x - 1) + _max) % _max;
-                    else
-                    {
-                        map_y = (tail_map_y + _max) % _max;
-                        map_x = (tail_map_x + _max) % _max;
-                    }
                     break;
                 case EnumsFactory.EnumsFactory.Direction.Down:
                     if (correctPosition)
                         map_y = ((map_y - 1) + _max) % _max;
-                    else
-                    {
-                        map_y = (tail_map_y + _max) % _max;
-                        map_x = (tail_map_x + _max) % _max;
-                    }
                     break;
                 case EnumsFactory.EnumsFactory.Direction.Left:
                     if (correctPosition)
                         map_x = ((map_x + 1) + _max) % _max;
-                    else
-                    {
-                        map_y = (tail_map_y + _max) % _max;
-                        map_x = (tail_map_x + _max) % _max;
-                    }
                     break;
                 default: return;
+            }
+
+            if (!correctPosition)
+            {
+                map_y = (tail_map_y + _max) % _max;
+                map_x = (tail_map_x + _max) % _max;
             }
 
             map[map_y][map_x] = segment;
