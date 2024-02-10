@@ -19,6 +19,9 @@ class Program
         services.AddScoped<IMove_Caterpillar, Move_Caterpillar>();
         services.AddScoped<ICollect_Next_Direction, Collect_Next_Direction>();
         services.AddScoped<IMap_Co_ordinates, Map_Co_ordinates>();
+        services.AddScoped<IRadar_Scope, Radar_Scope>();
+        services.AddScoped<IDisplayRadarMap, DisplayRadarMap>();
+        services.AddScoped<IUpdateMap, UpdateMap>();
 
         // Build the service provider
         var serviceProvider = services.BuildServiceProvider();

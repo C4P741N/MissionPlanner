@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Spice_n_Booster_Gobler.Map
 {
-    internal class DisplayRadarMap(IGlobal_Vals globalVals)
+    internal class DisplayRadarMap(IGlobal_Vals _globalVals) : IDisplayRadarMap
     {
-        private readonly IGlobal_Vals _globalVals = globalVals;
         public void DisplayRadarSection(TravelersModel travelersModel)
         {
             Console.WriteLine("Mission Control v.0.0.1");

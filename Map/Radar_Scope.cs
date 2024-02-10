@@ -3,10 +3,10 @@ using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Map
 {
-    internal class Radar_Scope(IGlobal_Vals globalVals)
+    internal class Radar_Scope(IGlobal_Vals globalVals) : IRadar_Scope
     {
-        private readonly IGlobal_Vals _globalVals = globalVals; 
-        public  void Generate_Scanned_Sections(TravelersModel travelersModel)
+        private readonly IGlobal_Vals _globalVals = globalVals;
+        public void Generate_Scanned_Sections(TravelersModel travelersModel)
         {
             int Hx, Hy;
 
