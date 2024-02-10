@@ -8,7 +8,8 @@ namespace Spice_n_Booster_Gobler.Locomote
         IGlobal_Vals _globalVals,
         IRadar_Scope _radar_Scope,
         IDisplayRadarMap _displayRadar,
-        IUpdateMap _updateMap) : IMove_Caterpillar
+        IUpdateMap _updateMap,
+        IMap_Co_ordinates _co_ordinates) : IMove_Caterpillar
     {
         public bool New_Head_N_Segments_Position(TravelersModel travelersModel)
         {
@@ -16,7 +17,8 @@ namespace Spice_n_Booster_Gobler.Locomote
             travelersModel.IsTail_Already_Init = false;
 
             _radar_Scope.Generate_Scanned_Sections(travelersModel);
-            _globalVals.Body_Parts_Position.Clear();
+            //_globalVals.Body_Parts_Position.Clear();
+            travelersModel.Map_Full_Dimension = _co_ordinates.Lets_Look_At_The_Map(EnumsFactory.EnumsFactory.MapCoordinates.Default);
 
             for (int y = 0; y < _globalVals.Scope_Diameter; y++)
             {

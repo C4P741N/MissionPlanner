@@ -5,7 +5,7 @@ namespace Spice_n_Booster_Gobler.Locomote
 {
     internal class Modify_Segment_Position(
         IGlobal_Vals _globalVals,
-        IModifySegmentsCollection _modifySegments) : IModify_Segment_Position
+        ISegmentsCollection _modifySegments) : IModify_Segment_Position
     {
         private readonly int _max = _globalVals.Max_Dimension;
         private readonly int radius = _globalVals.Scope_Radius;
@@ -18,6 +18,9 @@ namespace Spice_n_Booster_Gobler.Locomote
             y = travelersModel.Y_axis;
             map_y = travelersModel.Map_Y_axis_Position;
             map_x = travelersModel.Map_X_axis_Position;
+
+            int Hx = travelersModel.Head_X_axis_Position;
+            int Hy = travelersModel.Head_Y_axis_Position;
 
             switch (_globalVals.Direction)
             {

@@ -26,8 +26,9 @@ class Program
         services.AddScoped<IReverse_Command, Reverse_Command>();
         services.AddScoped<IDefaultMap, DefaultMap>();
         services.AddScoped<IModify_Segment_Position, Modify_Segment_Position>();
-        services.AddScoped<IModifySegmentsCollection, ModifySegmentsCollection>();
+        services.AddScoped<ISegmentsCollection, SegmentsCollection>();
         services.AddScoped<IMoveHead, MoveHead>();
+        services.AddScoped<IResourceCollection, ResourceCollection>();
 
         // Build the service provider
         var serviceProvider = services.BuildServiceProvider();

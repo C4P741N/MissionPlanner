@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Spice_n_Booster_Gobler.Util
 {
-    internal class ModifySegmentsCollection(IGlobal_Vals _globalVals) : IModifySegmentsCollection
+    internal class SegmentsCollection(IGlobal_Vals _globalVals) : ISegmentsCollection
     {
         public void Add_Segment_Location_To_Collection(
             string label,

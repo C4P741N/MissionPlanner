@@ -10,7 +10,8 @@ namespace Spice_n_Booster_Gobler.Locomote
 {
     internal class MoveHead(
         IGlobal_Vals _globalVals,
-        IModifySegmentsCollection _modifySegments) : IMoveHead
+        ISegmentsCollection _modifySegments,
+        IResourceCollection resourceCollection) : IMoveHead
     {
         public bool Update_Head_Position(TravelersModel travelersModel)
         {
@@ -18,6 +19,8 @@ namespace Spice_n_Booster_Gobler.Locomote
             {
                 travelersModel.Set_Value_To_Map = _globalVals.Open_Space;
                 if (_globalVals.Segment_Count < 5) _globalVals.Segment_Count++;
+
+                resourceCollection.Modify(travelersModel);
             }
             if (travelersModel.IsObstacle)
             {
@@ -25,6 +28,11 @@ namespace Spice_n_Booster_Gobler.Locomote
                 return false;
             }
             travelersModel.Set_Value_To_Map = _globalVals.Head;
+
+            //int Hx = travelersModel.Head_X_axis_Position;
+            //int Hy = travelersModel.Head_Y_axis_Position;
+
+            //travelersModel.Map_Full_Dimension[Hy][Hx] = _globalVals.Head;
 
             _modifySegments.Add_Segment_Location_To_Collection(travelersModel);
 

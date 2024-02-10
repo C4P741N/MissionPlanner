@@ -15,7 +15,7 @@ namespace Spice_n_Booster_Gobler.Launch
         private readonly TravelersModel _travelersModel = new(globalVals);
         public void Lets_Catch_Them_All()
         {
-            _travelersModel.Map_Full_Dimension = _co_ordinates.Lets_Look_At_The_Map(EnumsFactory.EnumsFactory.MapCoordinates.Default);
+            //_travelersModel.Map_Full_Dimension = _co_ordinates.Lets_Look_At_The_Map(EnumsFactory.EnumsFactory.MapCoordinates.Default);
 
             int Hx = 0, Hy = 29; //Starting position
 
