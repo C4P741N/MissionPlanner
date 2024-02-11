@@ -31,6 +31,9 @@ namespace Spice_n_Booster_Gobler.Locomote
             travelersModel.Set_Value_To_Map = _globalVals.Head;
             _segments.Add_Segment_Location_To_Collection(travelersModel);
 
+            travelersModel.Head_Y_axis_Position = travelersModel.Map_Y_axis_Position;
+            travelersModel.Head_X_axis_Position = travelersModel.Map_X_axis_Position;
+
             string tailKey = _globalVals.Tail.ToString();
 
             if (!_segments.CointainsKey(tailKey))

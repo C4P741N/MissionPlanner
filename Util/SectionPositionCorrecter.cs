@@ -11,14 +11,14 @@ namespace Spice_n_Booster_Gobler.Util
     {
         private readonly int _max = globalVals.Max_Dimension;
         public bool ShouldCorrect(
-            TravelersModel travelersModel,
+            int map_y, int map_x,
             int ySection_Position,
             int xSection_Position)
         {
             int ySection = ((ySection_Position + _max) % _max);
             int xSection = ((xSection_Position + _max) % _max);
-            int yMap_Section = ((travelersModel.Map_Y_axis_Position + _max) % _max);
-            int xMap_Section = ((travelersModel.Map_X_axis_Position + _max) % _max);
+            int yMap_Section = ((map_y + _max) % _max);
+            int xMap_Section = ((map_x + _max) % _max);
 
             int yDiff = ySection - yMap_Section;
             int xDiff = xSection - xMap_Section;
