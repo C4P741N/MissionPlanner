@@ -3,7 +3,8 @@
 namespace Spice_n_Booster_Gobler.Map
 {
     internal class Map_Co_ordinates(
-        IDefaultMap _defaultMap) : IMap_Co_ordinates
+        IDefaultMap _defaultMap,
+        IImportMap _importMap) : IMap_Co_ordinates
     {
         public char[][] Lets_Look_At_The_Map(EnumsFactory.EnumsFactory.MapCoordinates mapCoordinates)
         {
@@ -12,7 +13,7 @@ namespace Spice_n_Booster_Gobler.Map
                 case EnumsFactory.EnumsFactory.MapCoordinates.Default:
                     return _defaultMap.GetMap();
                 case EnumsFactory.EnumsFactory.MapCoordinates.Import:
-                //break;
+                    return _importMap.GetMap();
                 default: return null;
             }
         }

@@ -16,7 +16,8 @@ namespace Spice_n_Booster_Gobler.Launch
         public void Lets_Catch_Them_All()
         {
             //_travelersModel.Map_Full_Dimension = _co_ordinates.Lets_Look_At_The_Map(EnumsFactory.EnumsFactory.MapCoordinates.Default);
-
+            EnumsFactory.EnumsFactory.MapCoordinates enumMap;
+            string mapCom;
             int Hx = 0, Hy = 29; //Starting position
             _globalVals.Steps_To_Take = 1;
 
@@ -25,7 +26,27 @@ namespace Spice_n_Booster_Gobler.Launch
 
             while (true)
             {
-                bool isCaterpillarAlive = _move_Head.New_Head_N_Segments_Position(_travelersModel);
+                Console.Write("Press E to use default map or C to import a local file map :");
+                mapCom = Console.ReadLine()?.ToUpper() ?? "";
+
+                if (mapCom == "E" || mapCom == "C") break;
+
+                Console.WriteLine("Invalid command");
+            }
+
+            switch (mapCom)
+            {
+                case "C":
+                    enumMap = EnumsFactory.EnumsFactory.MapCoordinates.Import;
+                    break;
+                default:
+                    enumMap = EnumsFactory.EnumsFactory.MapCoordinates.Default;
+                    break;
+            }
+
+            while (true)
+            {
+                bool isCaterpillarAlive = _move_Head.New_Head_N_Segments_Position(_travelersModel, enumMap);
 
                 //if(_globalVals.Commands.Count > 0)
                 //    logger.Logg_Commands();

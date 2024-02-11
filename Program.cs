@@ -30,6 +30,7 @@ class Program
         services.AddScoped<INavigate, Navigate>();
         services.AddScoped<IResourceCollection, ResourceCollection>();
         services.AddScoped<ISectionPositionCorrecter, SectionPositionCorrecter>();
+        services.AddScoped<IImportMap, ImportMap>();
 
         // Build the service provider
         var serviceProvider = services.BuildServiceProvider();
