@@ -49,11 +49,11 @@ namespace Spice_n_Booster_Gobler.Locomote
 
                 if (isSuccess) ask_for_command = false;
 
-                if (Hy == 30) Hy = 0;
-                if (Hx == 30) Hx = 0;
+                //if (Hy == 30) Hy = 0;
+                //if (Hx == 30) Hx = 0;
 
-                travelersModel.Head_Y_axis_Position = Hy;
-                travelersModel.Head_X_axis_Position = Hx;
+                //travelersModel.Head_Y_axis_Position = Hy;
+                //travelersModel.Head_X_axis_Position = Hx;
             }
 
             return true;

@@ -28,17 +28,16 @@ namespace Spice_n_Booster_Gobler.Locomote
             {
                 string newSegment = _globalVals.Segment.ToString() + loopCount;
 
-                GetSegmentPosition(travelersModel, _globalVals.Segment, map, ref map_y, ref map_x,ref prev_sgmnt_map_y, ref prev_sgmnt_map_x, newSegment);
+                GetSegmentPosition(_globalVals.Segment, map, ref map_y, ref map_x,ref prev_sgmnt_map_y, ref prev_sgmnt_map_x, newSegment);
 
                 loopCount++;
             }
 
-            GetSegmentPosition(travelersModel, _globalVals.Tail, map, ref map_y, ref map_x, ref prev_sgmnt_map_y, ref prev_sgmnt_map_x);
+            GetSegmentPosition(_globalVals.Tail, map, ref map_y, ref map_x, ref prev_sgmnt_map_y, ref prev_sgmnt_map_x);
 
             return true;
         }
         public void GetSegmentPosition(
-            TravelersModel travelersModel,
             char segment,
             char[][] map,
             ref int map_y,
