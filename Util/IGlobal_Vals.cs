@@ -5,6 +5,7 @@ namespace Spice_n_Booster_Gobler.Util
     {
         char Booster { get; }
         EnumsFactory.EnumsFactory.Direction Direction { get; set; }
+        int Steps_To_Take { get; set; }
         char Head { get; }
         int Max_Dimension { get; }
         char Obstacle { get; }
@@ -16,6 +17,7 @@ namespace Spice_n_Booster_Gobler.Util
         char Spice { get; }
         char Tail { get; }
         Dictionary<string, (int, int)> Body_Parts_Position { get; set; }
-        List<string> Commands { get; set; }
+        Dictionary<int, (int, int)> Irreplaceable_Resources_List { get; set; }
+        Dictionary<int,(char,int)> Commands { get; set; }
     }
 }

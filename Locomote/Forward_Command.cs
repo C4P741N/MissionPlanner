@@ -1,4 +1,5 @@
-﻿using Spice_n_Booster_Gobler.Util;
+﻿using Spice_n_Booster_Gobler.Models;
+using Spice_n_Booster_Gobler.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +8,22 @@ using System.Threading.Tasks;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {
-    internal class Forward_Command(IGlobal_Vals globalVals)
+    internal class Forward_Command(IGlobal_Vals _globalVals) : IForward_Command
     {
-        private readonly IGlobal_Vals _globalVals = globalVals;
         public bool Move_Forward(
             string direction_command,
             ref int Hy, ref int Hx)
         {
-            int steps;
+            int steps;//, Hy, Hx;
+
+            //Hy = travelersModel.Head_Y_axis_Position;
+            //Hx = travelersModel.Head_X_axis_Position;
 
             try
             {
                 steps = int.Parse(direction_command.Substring(1));
+
+                _globalVals.Steps_To_Take = steps;
             }
             catch (Exception)
             {
