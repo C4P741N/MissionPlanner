@@ -24,7 +24,7 @@ namespace Spice_n_Booster_Gobler.Locomote
             {
                 if (i == commands_count - 1) comma = "";
 
-                writer.Write($"{cmd.Key}{cmd.Value}{comma}");
+                writer.Write($"{cmd.Value.Item1}{cmd.Value.Item2}{comma}");
                 i++;
             }
 
@@ -37,10 +37,12 @@ namespace Spice_n_Booster_Gobler.Locomote
             // Add an empty line between the lists
             writer.WriteLine();
         }
+
         public void ClearLogCommands()
         {
             _globalVals.Commands.Clear();
         }
+
         private int count = 0;
         public void AddLogCommandsToCollection()
         {
