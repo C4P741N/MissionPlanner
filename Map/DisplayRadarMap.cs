@@ -12,7 +12,7 @@ namespace Spice_n_Booster_Gobler.Map
     {
         public void DisplayRadarSection(TravelersModel travelersModel)
         {
-            Console.WriteLine("Mission Control v.0.0.1");
+            Console.WriteLine("Mission Control v0.1.1");
             Console.WriteLine();
 
             int[,,] scanned_section = travelersModel.Map_Radar_Section;

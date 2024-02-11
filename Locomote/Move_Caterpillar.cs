@@ -55,15 +55,19 @@ namespace Spice_n_Booster_Gobler.Locomote
             switch (_globalVals.Direction)
             {
                 case EnumsFactory.EnumsFactory.Direction.Up:
+                    _globalVals.Commands.Add("U1");
                     travelersModel.Head_Y_axis_Position = ((Hy-1)+maxDimensions) % maxDimensions;
                     return;
                 case EnumsFactory.EnumsFactory.Direction.Right:
+                    _globalVals.Commands.Add("R1");
                     travelersModel.Head_X_axis_Position = ((Hx + 1) + maxDimensions) % maxDimensions;
                     return;
                 case EnumsFactory.EnumsFactory.Direction.Down:
+                    _globalVals.Commands.Add("D1");
                     travelersModel.Head_Y_axis_Position = ((Hy+1) + maxDimensions) % maxDimensions; 
                     return;
                 case EnumsFactory.EnumsFactory.Direction.Left:
+                    _globalVals.Commands.Add("L1");
                     travelersModel.Head_X_axis_Position = ((Hx - 1) + maxDimensions) % maxDimensions;
                     return;
             }

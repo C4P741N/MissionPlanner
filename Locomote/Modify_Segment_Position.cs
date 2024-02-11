@@ -37,7 +37,7 @@ namespace Spice_n_Booster_Gobler.Locomote
 
             return true;
         }
-        public void GetSegmentPosition(
+        public void GetSegmentPosition(//Create a separate class for this
             char segment,
             char[][] map,
             ref int map_y,
@@ -114,7 +114,8 @@ namespace Spice_n_Booster_Gobler.Locomote
                 map_x = (segment_map_x + _max) % _max;
             }
 
-            map[map_y][map_x] = segment;
+            if(map[map_y][map_x]  != _globalVals.Head)
+                map[map_y][map_x] = segment;
 
             //travelersModel.Map_Y_axis_Position = map_y;
             //travelersModel.Map_X_axis_Position = map_x;

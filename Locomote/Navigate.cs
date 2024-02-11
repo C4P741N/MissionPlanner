@@ -20,7 +20,8 @@ namespace Spice_n_Booster_Gobler.Locomote
             {
                 if (_globalVals.Segment_Count < 5) _globalVals.Segment_Count++;
 
-                _resourceCollection.UpdateCollection(travelersModel);
+                travelersModel.Set_Value_To_Map = _globalVals.Open_Space;
+                _resourceCollection.UpdateCollectedResources(travelersModel);
             }
             if (travelersModel.IsObstacle)
             {

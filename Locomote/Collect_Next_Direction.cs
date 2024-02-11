@@ -44,7 +44,7 @@ namespace Spice_n_Booster_Gobler.Locomote
                 else
                 {
                     isSuccess = _forwardCommand.Move_Forward(direction_command, ref Hy, ref Hx);
-                    if (isSuccess) _globalVals.Commands.Add(direction_command);
+                    //if (isSuccess) _globalVals.Commands.Add(direction_command);
                 }
 
                 if (isSuccess) ask_for_command = false;

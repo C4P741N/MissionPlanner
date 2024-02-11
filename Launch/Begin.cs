@@ -27,6 +27,9 @@ namespace Spice_n_Booster_Gobler.Launch
             {
                 bool isCaterpillarAlive = _move_Head.New_Head_N_Segments_Position(_travelersModel);
 
+                //if(_globalVals.Commands.Count > 0)
+                //    logger.Logg_Commands();
+
                 if (!isCaterpillarAlive) break;
 
                 if (!_movement_Direction.Update_Head_Position(_travelersModel)) break;

@@ -4,6 +4,6 @@ namespace Spice_n_Booster_Gobler.Util
 {
     internal interface IResourceCollection
     {
-        void UpdateCollection(TravelersModel travelersModel);
+        void UpdateCollectedResources(TravelersModel travelersModel);
     }
 }

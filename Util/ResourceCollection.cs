@@ -9,7 +9,7 @@ namespace Spice_n_Booster_Gobler.Util
 {
     internal class ResourceCollection(IGlobal_Vals _globalVals) : IResourceCollection
     {
-        public void UpdateCollection(TravelersModel travelersModel)
+        public void UpdateCollectedResources(TravelersModel travelersModel)
         {
             if (_globalVals.Irreplaceable_Resources_List.ContainsValue((travelersModel.Map_Y_axis_Position, travelersModel.Map_X_axis_Position)))
                 return;
