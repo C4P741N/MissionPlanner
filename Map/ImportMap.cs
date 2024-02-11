@@ -63,6 +63,7 @@ namespace Spice_n_Booster_Gobler.Map
                 catch (Exception ex)
                 {
                     Console.Write($"Error {ex.Message}");
+                    continue;
                 }
             }
 

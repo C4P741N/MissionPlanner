@@ -11,7 +11,7 @@ namespace Spice_n_Booster_Gobler.Locomote
     {
         public bool Reverse(ref int Hy, ref int Hx)
         {
-            int steps=0, step, commands_count = _globalVals.Commands.Count;
+            int steps, commands_count = _globalVals.Commands.Count;
             string direction_command="";
 
             while (true)
@@ -20,7 +20,20 @@ namespace Spice_n_Booster_Gobler.Locomote
 
                 try
                 {
-                    step = Convert.ToInt32(Console.ReadLine());
+                    steps = Convert.ToInt32(Console.ReadLine());
+                    if (steps <= 0) continue;
+
+                    int loopCount = 0;
+
+                    while (steps > loopCount)
+                    {
+                        var latestValue = _globalVals.Commands.Last();
+
+                        _globalVals.Commands.Remove(latestValue.Key);
+                        loopCount++;
+                    }
+
+                    direction_command = _globalVals.Commands.Last().Value.Item1.ToString() + _globalVals.Commands.Last().Value.Item2;
 
                     //direction_command = _globalVals.Commands[commands_count - step];
                     //steps = int.Parse(direction_command.Substring(1));
@@ -38,7 +51,7 @@ namespace Spice_n_Booster_Gobler.Locomote
                     case 'U':
                         if (Hy == 0) Hy = 30;
 
-                        Hy += steps;
+                        Hy -= steps;
                         _globalVals.Direction = EnumsFactory.EnumsFactory.Direction.Up;
                         return true;
                     case 'R':

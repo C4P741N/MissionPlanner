@@ -41,34 +41,47 @@ namespace Spice_n_Booster_Gobler.Locomote
         {
             _globalVals.Commands.Clear();
         }
+        private int count = 0;
         public void AddLogCommandsToCollection()
         {
             switch (_globalVals.Direction)
             {
                 case EnumsFactory.EnumsFactory.Direction.Up:
 
-                    if (_globalVals.Commands.ContainsKey('U'))
-                        _globalVals.Commands['U']++;
+                    if (_globalVals.Commands.ContainsKey(count))
+                    {
+                        var currentCount = _globalVals.Commands[count].Item2;
+                        _globalVals.Commands[count] = ('U', currentCount + 1);
+                    }
                     else
-                        _globalVals.Commands.Add('U', 1);
+                        _globalVals.Commands.Add(count++, ('U', 1));
                     return;
                 case EnumsFactory.EnumsFactory.Direction.Right:
-                    if (_globalVals.Commands.ContainsKey('R'))
-                        _globalVals.Commands['R']++;
+                    if (_globalVals.Commands.ContainsKey(count))
+                    {
+                        var currentCount = _globalVals.Commands[count].Item2;
+                        _globalVals.Commands[count] = ('R', currentCount + 1);
+                    }
                     else
-                        _globalVals.Commands.Add('R', 1);
+                        _globalVals.Commands.Add(count++, ('R', 1));
                     return;
                 case EnumsFactory.EnumsFactory.Direction.Down:
-                    if (_globalVals.Commands.ContainsKey('D'))
-                        _globalVals.Commands['D']++;
+                    if (_globalVals.Commands.ContainsKey(count))
+                    {
+                        var currentCount = _globalVals.Commands[count].Item2;
+                        _globalVals.Commands[count] = ('D', currentCount + 1);
+                    }
                     else
-                        _globalVals.Commands.Add('D', 1);
+                        _globalVals.Commands.Add(count++, ('D', 1));
                     return;
                 case EnumsFactory.EnumsFactory.Direction.Left:
-                    if (_globalVals.Commands.ContainsKey('L'))
-                        _globalVals.Commands['L']++;
+                    if (_globalVals.Commands.ContainsKey(count))
+                    {
+                        var currentCount = _globalVals.Commands[count].Item2;
+                        _globalVals.Commands[count] = ('L', currentCount + 1);
+                    }
                     else
-                        _globalVals.Commands.Add('L', 1);
+                        _globalVals.Commands.Add(count++, ('L', 1));
                     return;
             }
         }
