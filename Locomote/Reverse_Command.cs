@@ -11,8 +11,8 @@ namespace Spice_n_Booster_Gobler.Locomote
     {
         public bool Reverse(ref int Hy, ref int Hx)
         {
-            int steps, step, commands_count = _globalVals.Commands.Count;
-            string direction_command;
+            int steps=0, step, commands_count = _globalVals.Commands.Count;
+            string direction_command="";
 
             while (true)
             {
@@ -22,10 +22,10 @@ namespace Spice_n_Booster_Gobler.Locomote
                 {
                     step = Convert.ToInt32(Console.ReadLine());
 
-                    direction_command = _globalVals.Commands[commands_count - step];
-                    steps = int.Parse(direction_command.Substring(1));
+                    //direction_command = _globalVals.Commands[commands_count - step];
+                    //steps = int.Parse(direction_command.Substring(1));
 
-                    _globalVals.Commands.RemoveRange(commands_count - step, commands_count);
+                    //_globalVals.Commands.RemoveRange(commands_count - step, commands_count);
                 }
                 catch (Exception)
                 {

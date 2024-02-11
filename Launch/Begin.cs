@@ -35,7 +35,7 @@ namespace Spice_n_Booster_Gobler.Launch
                 if (!_movement_Direction.Update_Head_Position(_travelersModel)) break;
             }
 
-            logger.Logg_Commands();
+            logger.Logg_Commands_To_File();
 
             Console.Write("GAME OVER");
         }

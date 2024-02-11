@@ -9,7 +9,8 @@ namespace Spice_n_Booster_Gobler.Locomote
         IRadar_Scope _radar_Scope,
         IDisplayRadarMap _displayRadar,
         IUpdateMap _updateMap,
-        IMap_Co_ordinates _co_ordinates) : IMove_Caterpillar
+        IMap_Co_ordinates _co_ordinates,
+        ILogger logger) : IMove_Caterpillar
     {
         public bool New_Head_N_Segments_Position(TravelersModel travelersModel)
         {
@@ -20,6 +21,7 @@ namespace Spice_n_Booster_Gobler.Locomote
                 Console.Clear();
                 travelersModel.IsTail_Already_Init = false;
                 CommandedHeadPosition(travelersModel);
+                logger.AddLogCommandsToCollection();
 
                 _radar_Scope.Generate_Scanned_Sections(travelersModel);
                 //_globalVals.Body_Parts_Position.Clear();
@@ -55,19 +57,15 @@ namespace Spice_n_Booster_Gobler.Locomote
             switch (_globalVals.Direction)
             {
                 case EnumsFactory.EnumsFactory.Direction.Up:
-                    _globalVals.Commands.Add("U1");
                     travelersModel.Head_Y_axis_Position = ((Hy-1)+maxDimensions) % maxDimensions;
                     return;
                 case EnumsFactory.EnumsFactory.Direction.Right:
-                    _globalVals.Commands.Add("R1");
                     travelersModel.Head_X_axis_Position = ((Hx + 1) + maxDimensions) % maxDimensions;
                     return;
                 case EnumsFactory.EnumsFactory.Direction.Down:
-                    _globalVals.Commands.Add("D1");
                     travelersModel.Head_Y_axis_Position = ((Hy+1) + maxDimensions) % maxDimensions; 
                     return;
                 case EnumsFactory.EnumsFactory.Direction.Left:
-                    _globalVals.Commands.Add("L1");
                     travelersModel.Head_X_axis_Position = ((Hx - 1) + maxDimensions) % maxDimensions;
                     return;
             }

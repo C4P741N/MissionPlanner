@@ -18,6 +18,6 @@ namespace Spice_n_Booster_Gobler.Util
         char Tail { get; }
         Dictionary<string, (int, int)> Body_Parts_Position { get; set; }
         Dictionary<int, (int, int)> Irreplaceable_Resources_List { get; set; }
-        List<string> Commands { get; set; }
+        Dictionary<char,int> Commands { get; set; }
     }
 }
