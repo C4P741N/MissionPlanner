@@ -1,8 +1,7 @@
 # Mission Planner /Spice and Booster Gobler
-Solution to Mission Planner's problem of a distant planet where caterpillars used to find Boosters and Spices.
-[Link to problem](https://github.com/C4P741N/MissionPlanner/blob/master/pdf/MISSION%20BRIEF.PDF).
+Addressing the Mission Planner's challenge on a remote planet, where caterpillars were tasked with locating Boosters and Spices. [Read the problem description here](https://github.com/C4P741N/MissionPlanner/blob/master/pdf/MISSION%20BRIEF.PDF).
 
-# `Requires .NET >= 6`
+# `Requires .NET >= 8`
 
 ## Clone the Repository
    ````
@@ -10,5 +9,5 @@ https://github.com/C4P741N/MissionPlanner.git
 ````
 ## Known Issues
 
-1. **Reverse functionality is not properly working as of the latest commit.**
-2. **When the caterpillar is has full segments the model managing it's body's movement position becomes less effective in predicting the body segment placement.**
+1. The reverse functionality is currently not operating correctly, as observed in the latest commit.
+2. An issue arises when the caterpillar has a full set of segments, causing the model responsible for managing its body's movement position to exhibit decreased effectiveness in predicting segment placement.
