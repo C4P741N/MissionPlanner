@@ -20,6 +20,6 @@ namespace Spice_n_Booster_Gobler.Util
         public Dictionary<string, (int, int)> Body_Parts_Position { get; set; } = [];
         public int Steps_To_Take { get; set; }
         public Dictionary<int, (int, int)> Irreplaceable_Resources_List { get; set; } = [];
-        public Dictionary<int, (char, int)> Commands { get; set; } = [];
+        public Dictionary<string, (char, int)> Commands { get; set; } = [];
     }
 }
