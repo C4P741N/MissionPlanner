@@ -5,23 +5,40 @@ using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Launch
 {
-    internal class Begin(
-        IGlobal_Vals _globalVals,
-        ILogger _logger,
-        IMove_Caterpillar _move_Head,
-        ICollect_Next_Direction _movement_Direction,
-        IMap_Co_ordinates _co_ordinates) : IBegin
+    internal class Begin : IBegin
     {
-        private readonly TravelersModel _travelersModel = new(_globalVals);
-        public void Lets_Catch_Them_All()
+        private readonly IGlobal_Vals _globalVals;
+        private readonly ILogger _logger;
+        private readonly IMove_Caterpillar _move_Head;
+        private readonly ICollect_Next_Direction _movement_Direction;   
+        private readonly TravelersModel _travelersModel;
+        private readonly IMapSettings _mapSettings;
+
+        public Begin(
+            IGlobal_Vals globalVals,
+            ILogger logger,
+            IMove_Caterpillar move_Head,
+            ICollect_Next_Direction movement_Direction,
+            IMapSettings mapSettings)
         {
-            SetupStartingPosition();
-            var mapCom = GetMapCommand();
-            var enumMap = mapCom switch
+            _globalVals = globalVals;
+            _logger = logger;
+            _move_Head = move_Head;
+            _movement_Direction = movement_Direction;
+            _mapSettings = mapSettings;
+
+            //default starting point
+            _globalVals.Steps_To_Take = 1;
+            _travelersModel = new(_globalVals)
             {
-                "C" => EnumsFactory.EnumsFactory.MapCoordinates.Import,
-                _ => EnumsFactory.EnumsFactory.MapCoordinates.Default
+                Head_X_axis_Position = 0,
+                Head_Y_axis_Position = 29
             };
+        }
+
+        public void Lets_Begin()
+        {
+            var enumMap = _mapSettings.GetMapSettings();
 
             while (true)
             {
@@ -33,28 +50,6 @@ namespace Spice_n_Booster_Gobler.Launch
             }
 
             _logger.Logg_Commands_To_File();
-            Console.Write("GAME OVER");
-        }
-
-        private void SetupStartingPosition()
-        {
-            _globalVals.Steps_To_Take = 1;
-            _travelersModel.Head_X_axis_Position = 0;
-            _travelersModel.Head_Y_axis_Position = 29;
-        }
-
-        private string GetMapCommand()
-        {
-            while (true)
-            {
-                Console.Write("Press E to use default map or C to import a local file map: ");
-
-                var mapCom = (Console.ReadLine()?.ToUpper() ?? "").Trim();
-
-                if (mapCom == "E" || mapCom == "C") return mapCom;
-
-                Console.WriteLine("Invalid command");
-            }
         }
     }
 }

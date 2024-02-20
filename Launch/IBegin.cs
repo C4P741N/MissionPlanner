@@ -2,6 +2,6 @@
 {
     internal interface IBegin
     {
-        void Lets_Catch_Them_All();
+        void Lets_Begin();
     }
 }
