@@ -23,6 +23,8 @@ namespace Spice_n_Booster_Gobler.Locomote
 
             segmentCount = _globalVals.Segment_Count;
 
+            var storedDirection = _globalVals.Direction;
+
             int loopCount = 0;
             while (segmentCount > loopCount)
             {
@@ -35,9 +37,11 @@ namespace Spice_n_Booster_Gobler.Locomote
 
             GetSegmentPosition(_globalVals.Tail, map, ref map_y, ref map_x, ref prev_sgmnt_map_y, ref prev_sgmnt_map_x);
 
+            _globalVals.Direction = storedDirection;
+
             return true;
         }
-        public void GetSegmentPosition(//Create a separate class for this
+        private void GetSegmentPosition(//Create a separate class for this
             char segment,
             char[][] map,
             ref int map_y,
@@ -62,6 +66,23 @@ namespace Spice_n_Booster_Gobler.Locomote
             {
                 map_x = prev_sgmnt_map_x;
                 map_y = prev_sgmnt_map_y;
+
+                if(map_x < segment_map_x)
+                {
+                    _globalVals.Direction = EnumsFactory.EnumsFactory.Direction.Left;
+                }
+                else if (map_x > segment_map_x)
+                {
+                    _globalVals.Direction = EnumsFactory.EnumsFactory.Direction.Right;
+                }
+                else if (map_y < segment_map_y)
+                {
+                    _globalVals.Direction = EnumsFactory.EnumsFactory.Direction.Up;
+                }
+                else if (map_y > segment_map_y)
+                {
+                    _globalVals.Direction = EnumsFactory.EnumsFactory.Direction.Down;
+                }
 
                 prev_sgmnt_map_x = -1;
                 prev_sgmnt_map_y = -1;

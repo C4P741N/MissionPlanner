@@ -31,6 +31,7 @@ class Program
         services.AddScoped<IResourceCollection, ResourceCollection>();
         services.AddScoped<ISectionPositionCorrecter, SectionPositionCorrecter>();
         services.AddScoped<IImportMap, ImportMap>();
+        services.AddScoped<IMapSettings, MapSettings>();
 
         // Build the service provider
         var serviceProvider = services.BuildServiceProvider();
@@ -39,7 +40,7 @@ class Program
         //var globalVals = serviceProvider.GetRequiredService<IGlobal_Vals>();
         var home = serviceProvider.GetRequiredService<IBegin>();
 
-        home.Lets_Catch_Them_All();
+        home.Lets_Begin();
 
         //new Begin(globalVals).Lets_Catch_Them_All();
     }
