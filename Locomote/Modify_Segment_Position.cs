@@ -53,7 +53,7 @@ namespace Spice_n_Booster_Gobler.Locomote
             bool hasMovedDiagonal = false;
             string sgmtString = segmentString == "" ? segment.ToString() : segmentString;
 
-            _segments.Get_Segment_Location(sgmtString, out int segment_map_y, out int segment_map_x);
+            _segments.Get_Stored_Segment_Location(sgmtString, out int segment_map_y, out int segment_map_x);
 
             bool correctPosition = _correcter.ShouldCorrect(map_y, map_x, segment_map_y, segment_map_x);
 

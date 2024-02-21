@@ -1,5 +1,4 @@
-﻿
-namespace Spice_n_Booster_Gobler.Util
+﻿namespace Spice_n_Booster_Gobler.Models
 {
     internal interface ICaterpillar_Parts
     {
@@ -7,6 +6,7 @@ namespace Spice_n_Booster_Gobler.Util
         char Segment { get; }
         int Segment_Count { get; set; }
         char Tail { get; }
-        Dictionary<string,(int,int)> Body_Parts_Position { get; set; }
+        int Max_Segments_Count { get; }
+        Dictionary<string, (int, int)> Body_Parts_Position { get; set; }
     }
 }

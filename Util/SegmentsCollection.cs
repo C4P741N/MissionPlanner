@@ -14,7 +14,7 @@ namespace Spice_n_Booster_Gobler.Util
         {
             return _globalVals.Body_Parts_Position.ContainsKey(segment);
         }
-        public void Get_Segment_Location(
+        public void Get_Stored_Segment_Location(
             string segment,
             out int map_y,
             out int map_x)

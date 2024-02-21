@@ -1,5 +1,4 @@
 ﻿using Spice_n_Booster_Gobler.Models;
-using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Map
 {
@@ -15,7 +14,7 @@ namespace Spice_n_Booster_Gobler.Map
             Hx = travelersModel.Head_X_axis_Position;
             Hy = travelersModel.Head_Y_axis_Position;
  
-            int zeroY = Hy - _scope_Radius;
+            int zeroY = Hy - _scope_Radius; //Radius edge of Hy from top to bottom 
 
             int[,,] Radar_3d = new int[_scope_Diameter, 2, _scope_Diameter];
 
@@ -35,7 +34,7 @@ namespace Spice_n_Booster_Gobler.Map
             {
                 zeroY = (zeroY + _max_Dimension) % _max_Dimension;
 
-                int zeroX = Hx - _scope_Radius; //Radius edge of H from left to right 
+                int zeroX = Hx - _scope_Radius; //Radius edge of Hx from left to right 
 
                 for (int x = 0; x < _scope_Diameter; x++)
                 {

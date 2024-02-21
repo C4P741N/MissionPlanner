@@ -1,7 +1,6 @@
 ﻿using Spice_n_Booster_Gobler.Locomote;
 using Spice_n_Booster_Gobler.Map;
 using Spice_n_Booster_Gobler.Models;
-using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Launch
 {
@@ -38,7 +37,7 @@ namespace Spice_n_Booster_Gobler.Launch
 
         public void Lets_Begin()
         {
-            var enumMap = _mapSettings.GetMapSettings();
+            EnumsFactory.EnumsFactory.MapCoordinates enumMap = _mapSettings.GetMapSettings();
 
             while (true)
             {

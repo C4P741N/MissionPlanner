@@ -1,5 +1,4 @@
-﻿
-namespace Spice_n_Booster_Gobler.Util
+﻿namespace Spice_n_Booster_Gobler.Models
 {
     internal interface IGlobal_Vals
     {
@@ -16,8 +15,9 @@ namespace Spice_n_Booster_Gobler.Util
         public int Segment_Count { get; set; }
         char Spice { get; }
         char Tail { get; }
+        int Max_Segments_Count { get; }
         Dictionary<string, (int, int)> Body_Parts_Position { get; set; }
         Dictionary<int, (int, int)> Irreplaceable_Resources_List { get; set; }
-        Dictionary<string,(char,int)> Commands { get; set; }
+        Dictionary<string, (char, int)> Commands { get; set; }
     }
 }

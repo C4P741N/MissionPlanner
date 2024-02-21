@@ -1,7 +1,4 @@
-﻿
-
-
-namespace Spice_n_Booster_Gobler.Util
+﻿namespace Spice_n_Booster_Gobler.Models
 {
     internal class Global_Vals : ICaterpillar_Parts, ICaterpillar_Movement, IDimensions, IMap_Obstacles, IGlobal_Vals
     {
@@ -12,6 +9,7 @@ namespace Spice_n_Booster_Gobler.Util
         public int Max_Dimension => 30;
         public int Scope_Diameter => 11;
         public int Scope_Radius => 5;
+        public int Max_Segments_Count => 5;
         public char Booster => 'B';
         public char Obstacle => '#';
         public char Open_Space => '*';

@@ -3,6 +3,7 @@ using Spice_n_Booster_Gobler.Util;
 using Microsoft.Extensions.DependencyInjection;
 using Spice_n_Booster_Gobler.Locomote;
 using Spice_n_Booster_Gobler.Map;
+using Spice_n_Booster_Gobler.Models;
 
 
 class Program

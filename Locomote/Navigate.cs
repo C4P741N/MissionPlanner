@@ -16,18 +16,20 @@ namespace Spice_n_Booster_Gobler.Locomote
     {
         public bool Update_Head_Position(TravelersModel travelersModel)
         {
-            if (travelersModel.IsIrreplaceable_Resource)
-            {
-                if (_globalVals.Segment_Count < 5) _globalVals.Segment_Count++;
-
-                travelersModel.Set_Value_To_Map = _globalVals.Open_Space;
-                _resourceCollection.UpdateCollectedResources(travelersModel);
-            }
             if (travelersModel.IsObstacle)
             {
                 Console.WriteLine("\nYou disintegrated your caterpillar !");
                 return false;
             }
+            else if (travelersModel.IsIrreplaceable_Resource)
+            {
+                if (_globalVals.Segment_Count <= _globalVals.Max_Segments_Count) 
+                    _globalVals.Segment_Count++;
+
+                travelersModel.Set_Value_To_Map = _globalVals.Open_Space;
+                _resourceCollection.UpdateCollectedResources(travelersModel);
+            }
+            
 
             travelersModel.Set_Value_To_Map = _globalVals.Head;
             _segments.Add_Segment_Location_To_Collection(travelersModel);

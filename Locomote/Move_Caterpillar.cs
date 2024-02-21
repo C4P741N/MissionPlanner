@@ -1,6 +1,5 @@
 ﻿using Spice_n_Booster_Gobler.Map;
 using Spice_n_Booster_Gobler.Models;
-using Spice_n_Booster_Gobler.Util;
 
 namespace Spice_n_Booster_Gobler.Locomote
 {

@@ -1,5 +1,4 @@
-﻿
-namespace Spice_n_Booster_Gobler.Util
+﻿namespace Spice_n_Booster_Gobler.Models
 {
     internal interface ICaterpillar_Movement
     {
