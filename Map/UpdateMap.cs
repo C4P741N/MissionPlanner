@@ -15,6 +15,7 @@ namespace Spice_n_Booster_Gobler.Map
     {
         public bool UpdateMapPosition(TravelersModel travelersModel)
         {
+            
             if (travelersModel.IsHead_Position)
                 if (!_moveHead.Update_Head_Position(travelersModel)) return false;
 
