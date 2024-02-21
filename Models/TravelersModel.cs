@@ -47,7 +47,7 @@ namespace Spice_n_Booster_Gobler.Models
                 return globalVals.Scope_Radius;
             }
         }
-        public char[][] Map_Full_Dimension { get; set; }
+        public char[][] Map_Full_Dimension { get; set; } = [];
         public int[,,] Map_Radar_Section { get; set; }
         public char Position_Value
         {
